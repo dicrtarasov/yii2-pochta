@@ -3,13 +3,12 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 04:05:09
+ * @version 15.02.21 06:31:50
  */
 
 declare(strict_types = 1);
 namespace dicr\pochta\entity;
 
-use dicr\json\JsonEntity;
 use dicr\pochta\PochtaEntity;
 
 /**

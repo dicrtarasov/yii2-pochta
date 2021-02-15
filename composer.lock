@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7feda5493b0d60ec2d1594dbb50277c1",
+    "content-hash": "a59aeb6c323699e4a7c94214ac0dd7a6",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -209,20 +209,20 @@
         },
         {
             "name": "dicr/yii2-json",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-json.git",
-                "reference": "25ffa7611f9803bc3a0f8371ed5c23a2a4fecc45"
+                "reference": "d50d99ccc302de191aeb8617c81f8ced5220fb56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-json/repository/archive.zip?sha=25ffa7611f9803bc3a0f8371ed5c23a2a4fecc45",
-                "reference": "25ffa7611f9803bc3a0f8371ed5c23a2a4fecc45",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-json/repository/archive.zip?sha=d50d99ccc302de191aeb8617c81f8ced5220fb56",
+                "reference": "d50d99ccc302de191aeb8617c81f8ced5220fb56",
                 "shasum": ""
             },
             "require": {
-                "dicr/yii2-validate": "~2.2",
+                "dicr/yii2-validate": "~2.3",
                 "php": "~7.4 || ~8.0.1",
                 "yiisoft/yii2": "~2.0"
             },
@@ -263,7 +263,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-json.git"
             },
-            "time": "2021-01-22T16:38:37+05:00"
+            "time": "2021-02-15T06:29:35+05:00"
         },
         {
             "name": "dicr/yii2-validate",
@@ -3187,7 +3187,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.4 || ~8.0.1"
+        "php": "~7.4 || ~8.0.1",
+        "ext-curl": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
