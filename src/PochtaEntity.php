@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 06:31:37
+ * @version 18.04.21 13:44:58
  */
 
 declare(strict_types = 1);
@@ -22,7 +22,7 @@ abstract class PochtaEntity extends JsonEntity
      */
     public function attributeFields(): array
     {
-        /** @var string[] $fields кжш значения */
+        /** @var string[] $fields кэш значения */
         static $fields = [];
 
         $class = static::class;

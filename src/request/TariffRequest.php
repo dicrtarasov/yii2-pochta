@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 01:46:09
+ * @version 18.04.21 13:54:27
  */
 
 declare(strict_types = 1);
@@ -14,8 +14,6 @@ use dicr\pochta\entity\Dimension;
 use dicr\pochta\Pochta;
 use dicr\pochta\PochtaRequest;
 use dicr\validate\ValidateException;
-use Yii;
-use yii\base\Exception;
 
 use function array_keys;
 use function sprintf;
@@ -115,6 +113,9 @@ class TariffRequest extends PochtaRequest implements Pochta
         ];
     }
 
+    /**
+     * @inheritDoc
+     */
     public function rules(): array
     {
         return [
@@ -204,9 +205,9 @@ class TariffRequest extends PochtaRequest implements Pochta
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @return TariffResponse
-     * @throws Exception
      */
     public function send(): TariffResponse
     {
@@ -215,18 +216,13 @@ class TariffRequest extends PochtaRequest implements Pochta
         }
 
         // кэшируем
-        $key = [__METHOD__, $this->json];
-        $data = ! empty(Yii::$app->cache) ? Yii::$app->cache->get($key) : false;
-
-        if (empty($data)) {
-            $data = parent::send();
-            if (! empty(Yii::$app->cache)) {
-                Yii::$app->cache->set($key, $data, 86400);
-            }
-        }
+        $json = $this->api->cache->getOrSet(
+            [__METHOD__, $this->json],
+            fn(): array => parent::send(), 86400
+        );
 
         return new TariffResponse([
-            'json' => $data
+            'json' => $json
         ]);
     }
 }

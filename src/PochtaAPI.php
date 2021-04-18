@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 14.02.21 22:20:13
+ * @version 18.04.21 13:50:43
  */
 
 declare(strict_types = 1);
@@ -13,6 +13,8 @@ use dicr\pochta\request\TariffRequest;
 use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
+use yii\caching\CacheInterface;
+use yii\di\Instance;
 use yii\httpclient\Client;
 use yii\httpclient\CurlTransport;
 
@@ -46,6 +48,9 @@ class PochtaAPI extends Component implements Pochta
     /** @var ?array конфиг TariffRequest */
     public $tariffRequestConfig;
 
+    /** @var CacheInterface */
+    public $cache = 'cache';
+
     /**
      * @inheritDoc
      * @throws InvalidConfigException
@@ -65,6 +70,8 @@ class PochtaAPI extends Component implements Pochta
         if (empty($this->token)) {
             throw new InvalidConfigException('token');
         }
+
+        $this->cache = Instance::ensure($this->cache, CacheInterface::class);
     }
 
     /** @var Client */
