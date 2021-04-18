@@ -3,8 +3,9 @@
     "type": "yii2-extension",
     "license": "MIT",
     "description": "Pochta API для Yii2",
-    "homepage": "https://gitlab.com/dicr/yii2-pochta",
     "keywords": ["dicr", "yii2", "ship", "pochta"],
+    "homepage": "https://gitlab.com/dicr/yii2-pochta",
+
     "authors": [
         {
             "name": "Igor Tarasov",
@@ -13,9 +14,11 @@
             "role": "developer"
         }
     ],
+
     "support": {
         "source": "https://gitlab.com/dicr/yii2-pochta.git"
     },
+
     "minimum-stability": "stable",
     "require": {
         "php": "~7.4 || ~8.0.1",
@@ -25,27 +28,31 @@
         "yiisoft/yii2-httpclient": "~2.0",
 
         "dicr/yii2-json": "~2.0",
-        "dicr/yii2-helper": "~4.0",
-        "dicr/yii2-validate": "~2.2"
+        "dicr/yii2-helper": "~4.5",
+        "dicr/yii2-validate": "~2.3"
     },
+
     "autoload": {
         "psr-4": {
             "dicr\\pochta\\": "src/"
         }
     },
+
     "autoload-dev": {
         "psr-4": {
             "dicr\\tests\\": "tests/"
         }
     },
+
     "repositories": [
         {"type": "composer", "url": "https://asset-packagist.org"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-json.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-helper.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-validate.git"}
     ],
+
     "require-dev": {
-        "roave/security-advisories": "dev-master",
+        "roave/security-advisories": "dev-latest",
         "phpunit/phpunit": "~9.5"
     }
 }
