@@ -10,13 +10,25 @@
         {
             "name": "Igor Tarasov",
             "email": "develop@dicr.org",
-            "homepage": "http://dicr.org",
+            "homepage": "https://dicr.org",
             "role": "developer"
         }
     ],
 
     "support": {
         "source": "https://gitlab.com/dicr/yii2-pochta.git"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "dicr\\pochta\\": "src/"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "dicr\\tests\\": "tests/"
+        }
     },
 
     "minimum-stability": "stable",
@@ -32,16 +44,9 @@
         "dicr/yii2-validate": "~2.3"
     },
 
-    "autoload": {
-        "psr-4": {
-            "dicr\\pochta\\": "src/"
-        }
-    },
-
-    "autoload-dev": {
-        "psr-4": {
-            "dicr\\tests\\": "tests/"
-        }
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "~9.5"
     },
 
     "repositories": [
@@ -49,10 +54,5 @@
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-json.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-helper.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-validate.git"}
-    ],
-
-    "require-dev": {
-        "roave/security-advisories": "dev-latest",
-        "phpunit/phpunit": "~9.5"
-    }
+    ]
 }
