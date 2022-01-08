@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 08.01.22 17:36:50
+ * @version 08.01.22 17:44:45
  */
 
 declare(strict_types = 1);
@@ -44,7 +44,7 @@ class TariffRequest extends PochtaRequest implements Pochta
     public ?string $deliveryPointIndex = null;
 
     /** Линейные размеры (требуется мин. 0) */
-    public ?Dimension $dimension = null;
+    public Dimension|array|null $dimension = null;
 
     /** Типоразмер (DIMENSION_TYPE_*) */
     public ?string $dimensionType = null;
@@ -99,7 +99,7 @@ class TariffRequest extends PochtaRequest implements Pochta
     public ?bool $withElectronicNotice = null;
 
     /** Отметка 'С заказным уведомлением' */
-    public ?bool $withOrderOfNotice;
+    public ?bool $withOrderOfNotice = null;
 
     public ?bool $withSimpleNotice = null;
 
