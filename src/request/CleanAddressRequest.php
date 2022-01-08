@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 00:58:26
+ * @version 08.01.22 17:28:38
  */
 
 declare(strict_types = 1);
@@ -29,11 +29,11 @@ use function is_array;
  */
 class CleanAddressRequest extends PochtaRequest
 {
-    /** @var string Идентификатор записи */
-    public $id;
+    /** Идентификатор записи */
+    public ?string $id = null;
 
-    /** @var string Оригинальный адрес одной строкой */
-    public $originalAddress;
+    /** Оригинальный адрес одной строкой */
+    public ?string $originalAddress = null;
 
     /**
      * @inheritDoc
@@ -74,7 +74,6 @@ class CleanAddressRequest extends PochtaRequest
 
     /**
      * @inheritDoc
-     * @return CleanAddressResponse
      */
     public function send(): CleanAddressResponse
     {

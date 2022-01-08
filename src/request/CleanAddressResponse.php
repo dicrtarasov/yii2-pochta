@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 01:08:21
+ * @version 08.01.22 17:32:12
  */
 
 declare(strict_types = 1);
@@ -28,67 +28,65 @@ use function in_array;
  */
 class CleanAddressResponse extends PochtaEntity implements Pochta
 {
-    /** @var string тип адреса (ADDRESS_TYPE_*) */
-    public $addressType;
+    /** тип адреса (ADDRESS_TYPE_*) */
+    public ?string $addressType = null;
 
-    /** @var ?string район */
-    public $area;
+    /** район */
+    public ?string $area = null;
 
-    /** @var ?string Часть здания: Строение */
-    public $building;
+    /** Часть здания: Строение */
+    public ?string $building = null;
 
-    /** @var ?string Часть здания: Корпус */
-    public $corpus;
+    /** Часть здания: Корпус */
+    public ?string $corpus = null;
 
-    /** @var ?string Название гостиницы */
-    public $hotel;
+    /** Название гостиницы */
+    public ?string $hotel = null;
 
-    /** @var ?string Часть адреса: Номер здания */
-    public $house;
+    /** Часть адреса: Номер здания */
+    public ?string $house = null;
 
-    /** @var string Идентификатор записи */
-    public $id;
+    /** Идентификатор записи */
+    public ?string $id = null;
 
-    /** @var string Почтовый индекс */
-    public $index;
+    /** Почтовый индекс */
+    public ?string $index = null;
 
-    /** @var ?string Часть здания: Литера */
-    public $letter;
+    /** Часть здания: Литера */
+    public ?string $letter = null;
 
-    /** @var ?string Микрорайон */
-    public $location;
+    /** Микрорайон */
+    public ?string $location = null;
 
-    /** @var ?string Номер для а/я, войсковая часть, войсковая часть ЮЯ, полевая почта */
-    public $numAddressType;
+    /** Номер для а/я, войсковая часть, войсковая часть ЮЯ, полевая почта */
+    public ?string $numAddressType = null;
 
-    /** @var string Оригинальные адрес одной строкой */
-    public $originalAddress;
+    /** Оригинальные адрес одной строкой */
+    public ?string $originalAddress = null;
 
-    /** @var string Населенный пункт */
-    public $place;
+    /** Населенный пункт */
+    public ?string $place = null;
 
-    /** @var string Код качества нормализации адреса (QUALITY_CODE_*) */
-    public $qualityCode;
+    /** Код качества нормализации адреса (QUALITY_CODE_*) */
+    public ?string $qualityCode = null;
 
-    /** @var string Область, регион */
-    public $region;
+    /** Область, регион */
+    public ?string $region = null;
 
-    /** @var ?string Часть здания: Номер помещения */
-    public $room;
+    /** Часть здания: Номер помещения */
+    public ?string $room = null;
 
-    /** @var ?string Часть здания: Дробь */
-    public $slash;
+    /** Часть здания: Дробь */
+    public ?string $slash = null;
 
-    /** @var ?string Часть адреса: Улица */
-    public $street;
+    /** Часть адреса: Улица */
+    public ?string $street = null;
 
-    /** @var string Код проверки нормализации адреса (VALIDATION_CODE_*) */
-    public $validationCode;
+    /** Код проверки нормализации адреса (VALIDATION_CODE_*) */
+    public ?string $validationCode = null;
 
     /**
      * Проверка результата адреса на корректность.
-     *
-     * @return bool
      */
     public function getIsOk(): bool
     {

@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 01:46:44
+ * @version 08.01.22 17:39:41
  */
 
 declare(strict_types = 1);
@@ -18,53 +18,53 @@ use dicr\pochta\PochtaEntity;
  */
 class TariffResponse extends PochtaEntity
 {
-    /** @var ?Rate Плата за Авиа-пересылку */
-    public $aviaRate;
+    /** Плата за Авиа-пересылку */
+    public ?Rate $aviaRate = null;
 
-    /** @var ?Rate Плата за 'Проверку комплектности' (коп) */
-    public $completenessCheckingRate;
+    /** Плата за 'Проверку комплектности' (коп) */
+    public ?Rate $completenessCheckingRate = null;
 
-    /** @var ?Rate Плата за 'Проверку вложений' (коп) */
-    public $contentsCheckingRate;
+    /** Плата за 'Проверку вложений' (коп) */
+    public ?Rate $contentsCheckingRate = null;
 
-    /** @var ?DeliveryTime Примерные сроки доставки */
-    public $deliveryTime;
+    /** Примерные сроки доставки */
+    public ?DeliveryTime $deliveryTime = null;
 
-    /** @var ?Rate Надбавка за отметку 'Осторожно/Хрупкое' */
-    public $fragileRate;
+    /** Надбавка за отметку 'Осторожно/Хрупкое' */
+    public ?Rate $fragileRate = null;
 
-    /** @var ?Rate Плата за пересылку (коп) */
-    public $groundRate;
+    /** Плата за пересылку (коп) */
+    public ?Rate $groundRate = null;
 
-    /** @var ?Rate Плата за объявленную ценность (коп) */
-    public $insuranceRate;
+    /** Плата за объявленную ценность (коп) */
+    public ?Rate $insuranceRate = null;
 
-    /** @var ?Rate Плата за 'Опись вложения' (коп) */
-    public $inventoryRate;
+    /** Плата за 'Опись вложения' (коп) */
+    public ?Rate $inventoryRate = null;
 
-    /** @var ?string Способ оплаты уведомления (PAYMENT_METHOD_*) */
-    public $noticePaymentMethod;
+    /** Способ оплаты уведомления (PAYMENT_METHOD_*) */
+    public ?string $noticePaymentMethod = null;
 
-    /** @var ?Rate Надбавка за уведомление о вручении */
-    public $noticeRate;
+    /** Надбавка за уведомление о вручении */
+    public ?Rate $noticeRate = null;
 
-    /** @var ?Rate Надбавка за негабарит при весе более 10кг */
-    public $oversizeRate;
+    /** Надбавка за негабарит при весе более 10кг */
+    public ?Rate $oversizeRate = null;
 
-    /** @var ?string Способ оплаты. (PAYMENT_METHOD_*) */
-    public $paymentMethod;
+    /** Способ оплаты. (PAYMENT_METHOD_*) */
+    public ?string $paymentMethod = null;
 
-    /** @var ?Rate Плата за 'Пакет смс получателю' (коп) */
-    public $smsNoticeRecipientRate;
+    /** Плата за 'Пакет смс получателю' (коп) */
+    public ?Rate $smsNoticeRecipientRate = null;
 
-    /** @var int Плата всего (коп) */
-    public $totalRate;
+    /** Плата всего (коп) */
+    public string|int|null $totalRate = null;
 
-    /** @var int Всего НДС (коп) */
-    public $totalVat;
+    /** Всего НДС (коп) */
+    public string|int|null $totalVat = null;
 
-    /** @var Rate Плата за 'Возврат сопроводительных документов' (коп) */
-    public $vsdRate;
+    /** Плата за 'Возврат сопроводительных документов' (коп) */
+    public ?Rate $vsdRate = null;
 
     /**
      * @inheritDoc

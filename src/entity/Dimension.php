@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 01:54:09
+ * @version 08.01.22 17:26:40
  */
 
 declare(strict_types = 1);
@@ -16,14 +16,14 @@ use dicr\pochta\PochtaEntity;
  */
 class Dimension extends PochtaEntity
 {
-    /** @var ?int Линейная высота (сантиметры) */
-    public $height;
+    /** Линейная высота (сантиметры) */
+    public string|int|null $height = null;
 
-    /** @var ?int Линейная длина (сантиметры) */
-    public $length;
+    /** Линейная длина (сантиметры) */
+    public string|int|null $length = null;
 
-    /** @var ?int Линейная ширина (сантиметры) */
-    public $width;
+    /** Линейная ширина (сантиметры) */
+    public string|int|null $width = null;
 
     /**
      * @inheritDoc
@@ -39,12 +39,10 @@ class Dimension extends PochtaEntity
 
     /**
      * Пустые значения.
-     *
-     * @return static
      */
-    public static function zero(): self
+    public static function zero(): static
     {
-        return new self([
+        return new static([
             'height' => 0,
             'length' => 0,
             'width' => 0

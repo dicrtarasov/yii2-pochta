@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 04:17:39
+ * @version 08.01.22 17:25:30
  */
 
 declare(strict_types = 1);
@@ -16,11 +16,11 @@ use dicr\pochta\PochtaEntity;
  */
 class DeliveryTime extends PochtaEntity
 {
-    /** @var ?int Минимальное время доставки (дни) */
-    public $minDays;
+    /** Минимальное время доставки (дни) */
+    public string|int|null $minDays = null;
 
-    /** @var int Максимальное время доставки (дни) */
-    public $maxDays;
+    /** Максимальное время доставки (дни) */
+    public string|int|null $maxDays = null;
 
     /**
      * @inheritDoc

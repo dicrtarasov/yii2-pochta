@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 18.04.21 13:54:27
+ * @version 08.01.22 17:36:50
  */
 
 declare(strict_types = 1);
@@ -28,80 +28,80 @@ use function sprintf;
  */
 class TariffRequest extends PochtaRequest implements Pochta
 {
-    /** @var ?bool Признак услуги проверки комплектности */
-    public $completenessChecking;
+    /** Признак услуги проверки комплектности */
+    public ?bool $completenessChecking = null;
 
-    /** @var ?bool Признак услуги проверки вложения */
-    public $contentsChecking;
+    /** Признак услуги проверки вложения */
+    public ?bool $contentsChecking = null;
 
-    /** @var ?bool Отметка 'Курьер' */
-    public $courier;
+    /** Отметка 'Курьер' */
+    public ?bool $courier = null;
 
-    /** @var int Объявленная ценность (требуется, мин. 100) */
-    public $declaredValue;
+    /** Объявленная ценность (требуется, мин. 100) */
+    public ?int $declaredValue = null;
 
-    /** @var ?string Идентификатор пункта выдачи заказов */
-    public $deliveryPointIndex;
+    /** Идентификатор пункта выдачи заказов */
+    public ?string $deliveryPointIndex = null;
 
-    /** @var Dimension Линейные размеры (требуется мин. 0) */
-    public $dimension;
+    /** Линейные размеры (требуется мин. 0) */
+    public ?Dimension $dimension = null;
 
-    /** @var ?string Типоразмер (DIMENSION_TYPE_*) */
-    public $dimensionType;
+    /** Типоразмер (DIMENSION_TYPE_*) */
+    public ?string $dimensionType = null;
 
-    /** @var ?string Категория вложения (ENTRIES_TYPE_*) */
-    public $entriesType;
+    /** Категория вложения (ENTRIES_TYPE_*) */
+    public ?string $entriesType = null;
 
-    /** @var ?bool Отметка 'Осторожно/Хрупко' */
-    public $fragile;
+    /** Отметка 'Осторожно/Хрупко' */
+    public ?bool $fragile = null;
 
-    /** @var string Почтовый индекс объекта почтовой связи места приема (требуется) */
-    public $indexFrom;
+    /** Почтовый индекс объекта почтовой связи места приема (требуется) */
+    public string|int|null $indexFrom = null;
 
-    /** @var string Почтовый индекс объекта почтовой связи места назначения (требуется) */
-    public $indexTo;
+    /** Почтовый индекс объекта почтовой связи места назначения (требуется) */
+    public string|int|null $indexTo = null;
 
-    /** @var bool Опись вложения */
-    public $inventory;
+    /** Опись вложения */
+    public ?bool $inventory = null;
 
-    /** @var string Категория РПО (MAIL_CATEG_*) */
-    public $mailCategory;
+    /** Категория РПО (MAIL_CATEG_*) */
+    public ?string $mailCategory = null;
 
     /**
-     * @var ?int Код страны назначения
+     * Код страны назначения
+     *
      * @link https://otpravka.pochta.ru/specification#/dictionary-countries
      */
-    public $mailDirect;
+    public ?int $mailDirect = null;
 
-    /** @var string Вид РПО (MAIL_TYPE_*) */
-    public $mailType;
+    /** Вид РПО (MAIL_TYPE_*) */
+    public ?string $mailType = null;
 
-    /** @var int Масса отправления в граммах */
-    public $mass;
+    /** Масса отправления в граммах */
+    public ?int $mass = null;
 
-    /** @var ?string Способ оплаты уведомления (PAYMENT_METHOD_*) */
-    public $noticePaymentMethod;
+    /** Способ оплаты уведомления (PAYMENT_METHOD_*) */
+    public ?string $noticePaymentMethod = null;
 
-    /** @var ?string Способ оплаты (PAYMENT_METHOD_*) */
-    public $paymentMethod;
+    /** Способ оплаты (PAYMENT_METHOD_*) */
+    public ?string $paymentMethod = null;
 
-    /** @var ?int Признак услуги SMS уведомления */
-    public $smsNoticeRecipient;
+    /** Признак услуги SMS уведомления */
+    public ?int $smsNoticeRecipient = null;
 
-    /** @var ?string Вид транспортировки (TRANSPORT_TYPE) */
-    public $transportType;
+    /** Вид транспортировки (TRANSPORT_TYPE) */
+    public ?string $transportType = null;
 
-    /** @var ?bool Возврат сопроводительных документов */
-    public $vsd;
+    /** Возврат сопроводительных документов */
+    public ?bool $vsd = null;
 
-    /** @var ?bool Отметка 'С электронным уведомлением' */
-    public $withElectronicNotice;
+    /** Отметка 'С электронным уведомлением' */
+    public ?bool $withElectronicNotice = null;
 
-    /** @var bool Отметка 'С заказным уведомлением' */
-    public $withOrderOfNotice;
+    /** Отметка 'С заказным уведомлением' */
+    public ?bool $withOrderOfNotice;
 
-    /** @var bool */
-    public $withSimpleNotice;
+    public ?bool $withSimpleNotice = null;
 
     /**
      * @inheritDoc
@@ -206,8 +206,6 @@ class TariffRequest extends PochtaRequest implements Pochta
 
     /**
      * {@inheritDoc}
-     *
-     * @return TariffResponse
      */
     public function send(): TariffResponse
     {

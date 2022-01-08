@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 18.04.21 13:47:05
+ * @version 08.01.22 17:24:58
  */
 
 declare(strict_types = 1);
@@ -24,26 +24,18 @@ use function strtoupper;
  */
 abstract class PochtaRequest extends PochtaEntity
 {
-    /** @var PochtaAPI */
-    protected $api;
-
     /**
      * PochtaRequest constructor.
-     *
-     * @param PochtaAPI $api
-     * @param array $config
      */
-    public function __construct(PochtaAPI $api, array $config = [])
-    {
+    public function __construct(
+        protected PochtaAPI $api,
+        array $config = []
+    ) {
         parent::__construct($config);
-
-        $this->api = $api;
     }
 
     /**
      * Метод запроса.
-     *
-     * @return string
      */
     protected function method(): string
     {
@@ -52,8 +44,6 @@ abstract class PochtaRequest extends PochtaEntity
 
     /**
      * URL запроса.
-     *
-     * @return string
      */
     protected function url(): string
     {
@@ -63,7 +53,6 @@ abstract class PochtaRequest extends PochtaEntity
     /**
      * HTTP-запрос.
      *
-     * @return Request
      * @throws InvalidConfigException
      */
     protected function request(): Request
@@ -89,12 +78,9 @@ abstract class PochtaRequest extends PochtaEntity
     /**
      * Отправка запроса.
      *
-     * @return array данные json
      * @throws Exception
-     * @noinspection PhpMissingReturnTypeInspection
-     * @noinspection ReturnTypeCanBeDeclaredInspection
      */
-    public function send()
+    public function send(): mixed
     {
         if (! $this->validate()) {
             throw new ValidateException($this);

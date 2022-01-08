@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 18.04.21 13:50:43
+ * @version 08.01.22 17:23:38
  */
 
 declare(strict_types = 1);
@@ -30,26 +30,26 @@ use function base64_encode;
  */
 class PochtaAPI extends Component implements Pochta
 {
-    /** @var string базовый URL */
-    public $url = self::URL_API;
+    /** базовый URL */
+    public string $url = self::URL_API;
 
-    /** @var string логин пользователя в личном кабинете */
-    public $login;
+    /** логин пользователя в личном кабинете */
+    public string $login;
 
-    /** @var string пароль пользователя в личном кабинете */
-    public $pass;
+    /** пароль пользователя в личном кабинете */
+    public string $pass;
 
-    /** @var string токен авторизации API */
-    public $token;
+    /** токен авторизации API */
+    public string $token;
 
-    /** @var ?array конфиг HTTP-клиента */
-    public $httpClientConfig;
+    /** конфиг HTTP-клиента */
+    public array $httpClientConfig = [];
 
-    /** @var ?array конфиг TariffRequest */
-    public $tariffRequestConfig;
+    /** конфиг TariffRequest */
+    public array $tariffRequestConfig = [];
 
-    /** @var CacheInterface */
-    public $cache = 'cache';
+    /** кэш */
+    public string|array|CacheInterface $cache = 'cache';
 
     /**
      * @inheritDoc
@@ -74,17 +74,14 @@ class PochtaAPI extends Component implements Pochta
         $this->cache = Instance::ensure($this->cache, CacheInterface::class);
     }
 
-    /** @var Client */
-    private $_httpClient;
+    private Client $_httpClient;
 
     /**
      * HTTP-клиент.
-     *
-     * @return Client
      */
     public function getHttpClient(): Client
     {
-        if ($this->_httpClient === null) {
+        if (! isset($this->_httpClient)) {
             $this->_httpClient = new Client(array_merge([
                 'transport' => CurlTransport::class,
                 'baseUrl' => $this->url,
@@ -106,7 +103,7 @@ class PochtaAPI extends Component implements Pochta
                 'responseConfig' => [
                     'format' => Client::FORMAT_JSON
                 ],
-            ], $this->httpClientConfig ?: []));
+            ], $this->httpClientConfig));
         }
 
         return $this->_httpClient;
@@ -115,8 +112,6 @@ class PochtaAPI extends Component implements Pochta
     /**
      * Создает запрос.
      *
-     * @param array $config
-     * @return PochtaRequest
      * @throws InvalidConfigException
      */
     public function request(array $config): PochtaRequest
@@ -128,15 +123,13 @@ class PochtaAPI extends Component implements Pochta
     /**
      * Запрос TariffRequest.
      *
-     * @param array $config
-     * @return TariffRequest
      * @throws InvalidConfigException
      */
     public function tariffRequest(array $config = []): TariffRequest
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->request(array_merge(
-            ['class' => TariffRequest::class], $this->tariffRequestConfig ?: [], $config
+            ['class' => TariffRequest::class], $this->tariffRequestConfig, $config
         ));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license MIT
- * @version 15.02.21 06:31:50
+ * @version 08.01.22 17:27:11
  */
 
 declare(strict_types = 1);
@@ -16,11 +16,11 @@ use dicr\pochta\PochtaEntity;
  */
 class Rate extends PochtaEntity
 {
-    /** @var int Тариф без НДС (коп) */
-    public $rate;
+    /** Тариф без НДС (коп) */
+    public string|int|null $rate = null;
 
-    /** @var ?int НДС (коп) */
-    public $vat;
+    /** НДС (коп) */
+    public string|int|null $vat = null;
 
     /**
      * @inheritDoc
